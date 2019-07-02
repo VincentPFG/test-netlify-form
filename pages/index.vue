@@ -24,6 +24,6 @@ export default
                     .catch (e) ->
                          alert e
                     .then ->
-                         'a été appelé'
+                         alert 'a été appelé'
 
 </script>
