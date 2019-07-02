@@ -21,5 +21,9 @@ export default
                @$axios.post '/', @form
                     .then (res) ->
                          alert res
+                    .catch (e) ->
+                         alert e
+                    .then ->
+                         'a été appelé'
 
 </script>
