@@ -19,5 +19,7 @@ export default
      methods:
           submit: ->
                @$axios.post '/', @form
+                    .then (res) ->
+                         alert res
 
 </script>
