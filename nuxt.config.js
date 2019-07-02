@@ -42,6 +42,8 @@ export default {
   */
   modules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/axios',
+    'nuxt-coffeescript-module'
   ],
   /*
   ** vuetify module configuration
