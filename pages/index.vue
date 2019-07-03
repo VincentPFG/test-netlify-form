@@ -1,13 +1,18 @@
 <template lang='pug'>
-v-form(
-     name='un-test'
-     method='post'
-     data-netlify='true'
-     data-netlify-honeypot='bot-field'
-)
-     input(type='hidden' name='form-name' value='un-test')
-     v-text-field(v-model='form.message' label='laisser un message')
-     v-btn(@click='submit') submit
+div
+
+     v-form(
+          name='un-test'
+          method='post'
+          data-netlify='true'
+          data-netlify-honeypot='bot-field'
+     )
+          input(type='hidden' name='form-name' value='un-test')
+          v-text-field(v-model='form.message' label='laisser un message')
+          v-btn(@click='submit') submit
+
+     form(netlify name='deux' method='post')
+          input(type='hidden' name='form-name' value='deux')
 </template>
 
 <script lang='coffee'>
