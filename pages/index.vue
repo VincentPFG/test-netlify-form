@@ -13,6 +13,8 @@ div
 
      form(netlify name='deux' method='post')
           input(type='hidden' name='form-name' value='deux')
+          input(type='text' name='message' value='message')
+          input(type='submit' value='submit')
 </template>
 
 <script lang='coffee'>
