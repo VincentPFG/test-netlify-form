@@ -18,7 +18,9 @@ div
 
      v-form(netlify name='trois' method='post' @submit.prevent='submitTrois')
           input(type='hidden' name='form-name' value='trois')
+
           v-text-field(v-model='trois.message' label='message')
+          
           v-btn(type='submit') submit
 </template>
 
@@ -42,12 +44,17 @@ export default
                     .then ->
                          alert 'a été appelé'
           submitTrois: ->
-               @$axios.post '/', @trois
-                    .then (res) ->
-                         alert res
-                    .catch (e) ->
-                         alert e
-                    .then ->
-                         alert 'a été appelé'
+               @$axios.post '/',
+                    @encode @trois
+                    header: 'Content-Type': 'application/x-www-form-urlencoded'
+               .then (res) ->
+                    alert res
+               .catch (e) ->
+                    alert e
+               .then ->
+                    alert 'a été appelé'
+          encode: (data) ->
+               ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data)
+                    .join '&'
 
 </script>
