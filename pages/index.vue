@@ -22,6 +22,10 @@ div
           v-text-field(v-model='trois.message' label='message')
           
           v-btn(type='submit') submit
+     p
+          nuxt-link(to='example') example
+     p
+          nuxt-link(to='gomah') gomah
 </template>
 
 <script lang='coffee'>
