@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-     form(netflify hidden)#form
+     form(name='hidden' netflify hidden)#form
           input(name='form-name' value='hidden')
           input(name='message' v-model='form.message')
      v-form
