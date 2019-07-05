@@ -1,6 +1,7 @@
 <template lang='pug'>
 v-form(netflify @submit.prevent='submit')
-     v-text-field(v-model='form.message' label='message')
+     input(type='hidden' name='form-name' value='test un')
+     v-text-field(name='message' v-model='form.message' label='message')
      v-btn(type='submit') submit
 </template>
 
