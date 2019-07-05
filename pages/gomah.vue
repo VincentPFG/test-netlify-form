@@ -2,17 +2,17 @@
 <form netlify>
   <p>
     <label>
-      Your Name: <input type="text" name="name" v-model="form.name" />
+      Your Name: <input type="text"  v-model="form.name" />
     </label>
   </p>
   <p>
     <label>
-      Your Email: <input type="email" name="email" v-model="form.email" />
+      Your Email: <input type="email"  v-model="form.email" />
     </label>
   </p>
   <p>
     <label>
-      Message: <textarea name="message" v-model="form.message" />
+      Message: <textarea  v-model="form.message" />
     </label>
   </p>
   <p>
