@@ -12,20 +12,25 @@ div
                input(name='form-name' value='hidden')
                input(name='message' v-model='form.message')
                input(name='name' v-model='form.name')
-
-          v-text-field(v-model='form.name' label='name')
-          v-text-field(v-model='form.message' label='message')
-
-          v-btn(type='submit') submit
+               input(name='email' v-model='form.email')
+          v-container
+               v-layout(wrap)
+                    v-flex(xs12 lg6)
+                         v-text-field(v-model='form.name' label='name')
+                    v-flex(xs12 lg6)
+                         v-text-field(v-model='form.email' label='email')
+               v-textarea(v-model='form.message' label='message')
+               v-layout(justify-center)
+                    v-btn(type='submit').center submit
 </template>
 
 <script lang='coffee'>
 export default
      data: ->
           form:
-               'form-name': 'test un'
                message: ''
                name: ''
+               email: ''
      methods:
           encode: (data) -> ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data).join '&'
           submit: ->
