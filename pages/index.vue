@@ -1,64 +1,34 @@
 <template lang='pug'>
-div
+v-dialog(v-model='dialog')
+     template(v-slot:activator='{on}')
+          v-layout(justify-center)
+               v-btn(v-on='on') laisser un message
+     v-form(name='contact' netlify)
+          div(hidden)
+               input(name='form-name' value='hidden')
+               input(name='message' v-model='form.message')
+               input(name='name' v-model='form.name')
+               input(name='email' v-model='form.email')
+          v-container
+               v-layout(wrap)
+                    v-flex(xs12 md2)
+                         v-select(:items='civil' label='civilité' v-model='form.civil')
+                    v-flex(xs12 md5)
+                         v-text-field(v-model='form.name' label='name')
+                    v-flex(xs12 md5)
+                         v-text-field(v-model='form.email' label='email')
 
-     v-form(
-          name='un-test'
-          method='post'
-          data-netlify='true'
-          data-netlify-honeypot='bot-field'
-     )
-          input(type='hidden' name='form-name' value='un-test')
-          v-text-field(v-model='form.message' label='laisser un message')
-          v-btn(@click='submit') submit
-
-     form(netlify name='deux' method='post')
-          input(type='hidden' name='form-name' value='deux')
-          input(type='text' name='message' value='message')
-          input(type='submit' value='submit')
-
-     v-form(netlify name='trois' method='post' @submit.prevent='submitTrois')
-          input(type='hidden' name='form-name' value='trois')
-
-          v-text-field(v-model='trois.message' label='message')
-          
-          v-btn(type='submit') submit
-     p
-          nuxt-link(to='example') example
-     p
-          nuxt-link(to='gomah') gomah
+               v-textarea(v-model='form.message' label='message')
+               v-layout(justify-center)
+                    v-btn(type='submit') envoyer
 </template>
 
 <script lang='coffee'>
 export default
      data: ->
           form:
-               'form-name': 'un-test'
                message: ''
-          trois:
-               'form-name': 'trois'
-               message: ''
-
-     methods:
-          submit: ->
-               @$axios.post '/', @form
-                    .then (res) ->
-                         alert res
-                    .catch (e) ->
-                         alert e
-                    .then ->
-                         alert 'a été appelé'
-          submitTrois: ->
-               @$axios.post '/',
-                    @encode @trois
-                    header: 'Content-Type': 'application/x-www-form-urlencoded'
-               .then (res) ->
-                    alert res
-               .catch (e) ->
-                    alert e
-               .then ->
-                    alert 'a été appelé'
-          encode: (data) ->
-               ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data)
-                    .join '&'
-
+               name: ''
+               email: ''
+               civil: ''
 </script>

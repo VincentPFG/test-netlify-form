@@ -27,7 +27,7 @@ div
           template(v-slot:activator='{on}')
                v-layout(justify-center)
                     v-btn(v-on='on') laisser un message
-          v-form(name='hidden' netlify)
+          v-form(name='hidden')
                div(hidden)
                     input(name='form-name' value='hidden')
                     input(name='message' v-model='form.message')
@@ -35,10 +35,13 @@ div
                     input(name='email' v-model='form.email')
                v-container
                     v-layout(wrap)
-                         v-flex(xs12 lg6)
+                         v-flex(xs12 md2)
+                              v-select(:items='civil' label='civilité' v-model='form.civil')
+                         v-flex(xs12 md5)
                               v-text-field(v-model='form.name' label='name')
-                         v-flex(xs12 lg6)
+                         v-flex(xs12 md5)
                               v-text-field(v-model='form.email' label='email')
+
                     v-textarea(v-model='form.message' label='message')
                     v-layout(justify-center)
                          v-btn(type='submit') submit
@@ -51,7 +54,9 @@ export default
                message: ''
                name: ''
                email: ''
+               civil: ''
           dialog: off
+          civil: ['Madame', 'Monsieur']
      methods:
           encode: (data) -> ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data).join '&'
           submit: ->
