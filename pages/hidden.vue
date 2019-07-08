@@ -27,7 +27,7 @@ div
           template(v-slot:activator='{on}')
                v-layout(justify-center)
                     v-btn(v-on='on') laisser un message
-          v-form(name='hidden')
+          v-form(netlify name='hidden')
                div(hidden)
                     input(name='form-name' value='hidden')
                     input(name='message' v-model='form.message')
