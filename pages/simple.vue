@@ -1,6 +1,7 @@
 <template lang='pug'>
 v-form(netlify name='simple')
      div(hidden)
+          input(name='form-name' value='simple')
           input(name='name' v-model='name')
           input(name='email' v-model='email')
           input(name='message' v-model='message')
