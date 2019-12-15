@@ -1,5 +1,6 @@
 <template lang='pug'>
 div
+    p {{message}}
     v-dialog(v-model='dialog')
         template(v-slot:activator='{on}')
             v-layout(justify-center)
