@@ -8,42 +8,46 @@ div
         v-form(netlify name='test-block')
             div(hidden)
                 input(name='form-name' value='test-block')
-                //- input(name='message' v-model='form.message')
+                input(name='message' :value='message')
                 //- input(name='name' v-model='form.name')
-                //- input(name='email' v-model='form.email')
-                input(name='intro' :value='postForm.intro')
+                input(name='mail' :value='email')
+                input(name='de' :value='intro')
             v-container
                 v-layout(wrap)
                         v-flex(xs12 md2)
-                            v-select(:items='civil' label='civilité' v-model='form.civil')
+                            v-select(:items='civilItems' label='civilité' v-model='civil')
                         v-flex(xs12 md5)
-                            v-text-field(v-model='form.name' label='name')
+                            v-text-field(v-model='name' label='name')
                         v-flex(xs12 md5)
-                            v-text-field(v-model='form.email' label='email')
+                            v-text-field(v-model='email' label='email')
 
-                v-textarea(v-model='form.message' label='message')
+                v-textarea(v-model='message' label='message')
                 v-layout(justify-center)
                         v-btn(type='submit') submit
 </template>
 
 <script lang='coffee'>
+encode = (data) -> ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data).join '&'
+
 export default
     data: ->
-        form:
-            message: ''
-            name: ''
-            email: ''
-            civil: ''
+        # form
+        message: ''
+        email: ''
+        # computed form
+        name: ''
+        civil: ''
+        # other
         dialog: off
-        civil: ['Madame', 'Monsieur']
-    computed: postForm: -> intro: "#{@form.civil} #{@form.name}"
+        civilItems: ['Madame', 'Monsieur']
+    computed:
+        intro: -> "#{@civil} #{@name}"
     methods:
-        encode: (data) -> ("#{encodeURIComponent key}=#{encodeURIComponent data[key]}" for key of data).join '&'
         submit: ->
             fetch '/',
                 method: 'POST'
                 headers: 'Content-Type': 'application/x-www-form-urlencoded'
-                body: @encode @postForm
+                body: encode {@intro, @email, @message}
             .then -> alert 'success'
             .error -> alert 'failure'
 </script>
