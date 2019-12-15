@@ -7,10 +7,10 @@ div
         v-form(netlify name='test-block')
             div(hidden)
                 input(name='form-name' value='test-block')
-                input(name='message' :value='message')
                 //- input(name='name' v-model='form.name')
-                input(name='mail' :value='email')
                 input(name='de' :value='intro')
+                input(name='mail' :value='email')
+                input(name='message' :value='message')
             v-container
                 v-layout(wrap)
                         v-flex(xs12 md2)
