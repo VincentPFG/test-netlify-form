@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-    p {{message}}
+    p {{$data}}
     v-dialog(v-model='dialog')
         template(v-slot:activator='{on}')
             v-layout(justify-center)
@@ -48,6 +48,4 @@ export default
                 method: 'POST'
                 headers: 'Content-Type': 'application/x-www-form-urlencoded'
                 body: encode {@intro, @email, @message}
-            .then -> alert 'success'
-            .error -> alert 'failure'
 </script>
