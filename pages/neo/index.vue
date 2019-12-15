@@ -1,6 +1,5 @@
 <template lang='pug'>
 div
-    p {{$data}}
     v-dialog(v-model='dialog')
         template(v-slot:activator='{on}')
             v-layout(justify-center)
@@ -8,10 +7,10 @@ div
         v-form(netlify name='test-block')
             div(hidden)
                 input(name='form-name' value='test-block')
-                //- input(name='name' v-model='form.name')
                 input(name='de' :value='intro')
                 input(name='mail' :value='email')
-                input(name='message' :value='message')
+                //- input(name='message' :value='message')
+                textarea(name='message' :value='message')
             v-container
                 v-layout(wrap)
                         v-flex(xs12 md2)
@@ -48,4 +47,5 @@ export default
                 method: 'POST'
                 headers: 'Content-Type': 'application/x-www-form-urlencoded'
                 body: encode {@intro, @email, @message}
+    watch: message: -> console.log @message
 </script>
