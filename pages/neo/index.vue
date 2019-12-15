@@ -1,6 +1,5 @@
 <template lang='pug'>
 div
-    p {{postForm.intro}}
     v-dialog(v-model='dialog')
         template(v-slot:activator='{on}')
             v-layout(justify-center)
